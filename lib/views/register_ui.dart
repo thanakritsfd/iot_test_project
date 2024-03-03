@@ -12,6 +12,7 @@ class RegisterUI extends StatefulWidget {
 
 class _RegisterUIState extends State<RegisterUI> {
   bool pwdShow = true;
+  bool pwdcShow = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,10 +27,11 @@ class _RegisterUIState extends State<RegisterUI> {
           ),
         ),
         centerTitle: true,
-        leading: IconButton(onPressed: (){
-          Navigator.pop(context);
-        }, icon: 
-          Icon(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(
             Icons.arrow_back_ios,
             color: Colors.white,
           ),
@@ -47,20 +49,13 @@ class _RegisterUIState extends State<RegisterUI> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.1,
                 ),
-                Image.asset(
-                  'assets/images/logo.png',
-                  width: MediaQuery.of(context).size.width * 0.5,
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * 0.1,
-                ),
                 Text(
-                  'เข้าใช้งานแอพฃปพลิเคชั่น',
+                  'ข้อมูลผู้ใช้งาน',
                   style: GoogleFonts.kanit(
                     textStyle: TextStyle(
                       color: const Color.fromARGB(255, 134, 13, 5),
                       fontWeight: FontWeight.bold,
-                      fontSize: MediaQuery.of(context).size.width * 0.04,
+                      fontSize: MediaQuery.of(context).size.width * 0.05,
                     ),
                   ),
                 ),
@@ -133,10 +128,75 @@ class _RegisterUIState extends State<RegisterUI> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
+                TextField(
+                  obscureText: pwdcShow,
+                  decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: const Color.fromARGB(255, 134, 13, 5),
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: const Color.fromARGB(255, 134, 13, 5),
+                      ),
+                    ),
+                    hintText: 'confirm password',
+                    labelText: 'ยืนยันรหัสผ่าน',
+                    hintStyle: GoogleFonts.kanit(),
+                    labelStyle: GoogleFonts.kanit(
+                      textStyle: TextStyle(
+                        color: const Color.fromARGB(255, 134, 13, 5),
+                      ),
+                    ),
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          if (pwdcShow == true) {
+                            pwdcShow = false;
+                          } else {
+                            pwdcShow = true;
+                          }
+                        });
+                      },
+                      icon: Icon(
+                        //ternary operator --> ___?____:_____
+                        pwdcShow ? Icons.visibility_off : Icons.visibility,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.02,
+                ),
+                TextField(
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: const Color.fromARGB(255, 134, 13, 5),
+                      ),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: const Color.fromARGB(255, 134, 13, 5),
+                      ),
+                    ),
+                    hintText: 'email',
+                    labelText: 'อีเมล์',
+                    hintStyle: GoogleFonts.kanit(),
+                    labelStyle: GoogleFonts.kanit(
+                      textStyle: TextStyle(
+                        color: const Color.fromARGB(255, 134, 13, 5),
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.05),
                 ElevatedButton(
                   onPressed: () {},
                   child: Text(
-                    'Log in',
+                    'บันทึกข้อมูลลงทะเบียนผู้ใช้งาน',
                     style: GoogleFonts.kanit(
                       textStyle: TextStyle(
                         color: Colors.white,
@@ -146,8 +206,7 @@ class _RegisterUIState extends State<RegisterUI> {
                     ),
                   ),
                   style: ElevatedButton.styleFrom(
-                    fixedSize: Size(MediaQuery.of(context).size.width,
-                        MediaQuery.of(context).size.height * 0.07),
+                    fixedSize: Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height * 0.07),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
@@ -157,37 +216,25 @@ class _RegisterUIState extends State<RegisterUI> {
                 SizedBox(
                   height: MediaQuery.of(context).size.height * 0.02,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Do not have account?  ',
-                      style: GoogleFonts.kanit(
-                        textStyle: TextStyle(
-                          fontSize: MediaQuery.of(context).size.height * 0.02,
-                        ),
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    'ยกเลิก',
+                    style: GoogleFonts.kanit(
+                      textStyle: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: MediaQuery.of(context).size.width * 0.04,
                       ),
                     ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => RegisterUI(),
-                          ),
-                        );
-                      },
-                      child: Text(
-                        'Register',
-                        style: GoogleFonts.kanit(
-                          textStyle: TextStyle(
-                            fontSize: MediaQuery.of(context).size.height * 0.02,
-                            color: const Color.fromARGB(255, 134, 13, 5),
-                          ),
-                        ),
-                      ),
+                  ),
+                  style: ElevatedButton.styleFrom(
+                    fixedSize: Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height * 0.07),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5.0),
                     ),
-                  ],
+                    backgroundColor: const Color.fromARGB(255, 255, 81, 68),
+                  ),
                 ),
               ],
             ),

@@ -54,7 +54,7 @@ class _LoginUIState extends State<LoginUI> {
                     textStyle: TextStyle(
                       color: const Color.fromARGB(255, 134, 13, 5),
                       fontWeight: FontWeight.bold,
-                      fontSize: MediaQuery.of(context).size.width * 0.04,
+                      fontSize: MediaQuery.of(context).size.width * 0.05,
                     ),
                   ),
                 ),
@@ -140,8 +140,7 @@ class _LoginUIState extends State<LoginUI> {
                     ),
                   ),
                   style: ElevatedButton.styleFrom(
-                    fixedSize: Size(MediaQuery.of(context).size.width,
-                        MediaQuery.of(context).size.height * 0.07),
+                    fixedSize: Size(MediaQuery.of(context).size.width, MediaQuery.of(context).size.height * 0.07),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
