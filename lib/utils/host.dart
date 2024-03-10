@@ -1,4 +1,3 @@
-class Host{
-  static String hostURL = 'http://172.17.36.22'; 
+class Host {
+  static String hostURL = 'http://192.168.1.10';
 }
-
