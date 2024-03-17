@@ -83,11 +83,9 @@ class _HomeUIState extends State<HomeUI> {
                               {
                                 setState(() {
                                   widget.user!.userId = value.userId;
-                                  widget.user!.userFullname =
-                                      value.userFullname;
+                                  widget.user!.userFullname = value.userFullname;
                                   widget.user!.userName = value.userName;
-                                  widget.user!.userPassword =
-                                      value.userPassword;
+                                  widget.user!.userPassword = value.userPassword;
                                   widget.user!.userAge = value.userAge;
                                 }),
                               }
@@ -217,6 +215,112 @@ class _HomeUIState extends State<HomeUI> {
                             ),
                           ),
                         ],
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.02,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: Text(
+                              'Bar Chart\nBy Date',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.teal[400],
+                              fixedSize: Size(
+                                MediaQuery.of(context).size.width * 0.35,
+                                70,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 10,
+                              ),
+                            ),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: Text(
+                              'Line Chart\nBy Date',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.teal[400],
+                              fixedSize: Size(
+                                MediaQuery.of(context).size.width * 0.35,
+                                70,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 10,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.02,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Bar Chart\nBy Air and Date',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue[900],
+                          fixedSize: Size(
+                            MediaQuery.of(context).size.width,
+                            70,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10,
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height * 0.02,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Line Chart\nBy Air and Date',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.orange[800],
+                          fixedSize: Size(
+                            MediaQuery.of(context).size.width,
+                            70,
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 10,
+                          ),
+                        ),
                       ),
                     ],
                   ),
