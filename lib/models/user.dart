@@ -2,6 +2,7 @@
 
 class User {
   String? message;
+  String? userId;
   String? userFullname;
   String? userName;
   String? userPassword;
@@ -9,6 +10,7 @@ class User {
 
   User(
       {this.message,
+      this.userId,
       this.userFullname,
       this.userName,
       this.userPassword,
@@ -17,6 +19,7 @@ class User {
 // Json จาก (Server) มาใช้ใน APP
   User.fromJson(Map<String, dynamic> json) {
     message = json['message'];
+    userId = json['userId'];
     userFullname = json['userFullname'];
     userName = json['userName'];
     userPassword = json['userPassword'];
@@ -27,6 +30,7 @@ class User {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['message'] = this.message;
+    data['userId'] = this.userId;
     data['userFullname'] = this.userFullname;
     data['userName'] = this.userName;
     data['userPassword'] = this.userPassword;

@@ -25,6 +25,22 @@ class CallApi{
      }
   }
 
+   static Future updateUser(User user) async{
+    //คำสั่งเรียกใช้ api ที่ Server
+     final response = await http.post(
+      Uri.parse(Host.hostURL+"/iotsau01api/apis/user/update_user_api.php"),
+      body: jsonEncode(user.toJson()),
+      headers: {'Content-Type':'application/json'},
+     );
+
+     if(response.statusCode == 200){
+      final responseData = jsonDecode(response.body);
+      return responseData['message'];
+     }else{
+      throw Exception('Fail......');
+     }
+  }
+
   //Method Login
    static Future checkLogin(User user) async{
     //คำสั่งเรียกใช้ api ที่ Server

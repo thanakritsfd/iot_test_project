@@ -182,7 +182,9 @@ class _LoginUIState extends State<LoginUI> {
                         if(value.message == "1"){
                           //login successful and open HomeUI
                           Navigator.pushReplacement(context, 
-                          MaterialPageRoute(builder: (context) => HomeUI()),
+                          MaterialPageRoute(builder: (context) => HomeUI(
+                            user: value,
+                          )),
                           ),
                         }else{
                           //Show Warning Message
