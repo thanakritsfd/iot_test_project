@@ -63,7 +63,7 @@ class CallApi {
     }
   }
 
-  //Method Login
+  //Method getAllRoomTemp
   static Future<List<Roomtemp>> getAllRoomTemp() async {
     //คำสั่งเรียกใช้ api ที่ Server
     final response = await http.get(
@@ -76,6 +76,61 @@ class CallApi {
 
       //แปลงข้แมูลที่มาเป็น json เป็นข้อมูลที่เอาไปใช้ใน app
       List<Roomtemp> data = await responseData.map<Roomtemp>((json) => Roomtemp.fromJson(json)).toList();
+      return data;
+    } else {
+      throw Exception('Fail......');
+    }
+  }
+
+  //Method getRoomTemp1
+  static Future<List<Roomtemp1>> getRoomTemp1() async {
+    //คำสั่งเรียกใช้ api ที่ Server
+    final response = await http.get(
+      Uri.parse(Host.hostURL + "/iotsau01api/apis/roomtemp/get_roomtemp1_api.php"),
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 200) {
+      final responseData = jsonDecode(response.body);
+      //แปลงข้แมูลที่มาเป็น json เป็นข้อมูลที่เอาไปใช้ใน app
+      List<Roomtemp1> data = await responseData.map<Roomtemp1>((json) => Roomtemp1.fromJson(json)).toList();
+      return data;
+    } else {
+      throw Exception('Fail......');
+    }
+  }
+
+  //Method getRoomTemp2
+  static Future<List<Roomtemp2>> getRoomTemp2() async {
+    //คำสั่งเรียกใช้ api ที่ Server
+    final response = await http.get(
+      Uri.parse(Host.hostURL + "/iotsau01api/apis/roomtemp/get_roomtemp2_api.php"),
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 200) {
+      final responseData = jsonDecode(response.body);
+
+      //แปลงข้แมูลที่มาเป็น json เป็นข้อมูลที่เอาไปใช้ใน app
+      List<Roomtemp2> data = await responseData.map<Roomtemp2>((json) => Roomtemp2.fromJson(json)).toList();
+      return data;
+    } else {
+      throw Exception('Fail......');
+    }
+  }
+
+  //Method getRoomTemp3
+  static Future<List<Roomtemp3>> getRoomTemp3() async {
+    //คำสั่งเรียกใช้ api ที่ Server
+    final response = await http.get(
+      Uri.parse(Host.hostURL + "/iotsau01api/apis/roomtemp/get_roomtemp3_api.php"),
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 200) {
+      final responseData = jsonDecode(response.body);
+      //แปลงข้แมูลที่มาเป็น json เป็นข้อมูลที่เอาไปใช้ใน app
+      List<Roomtemp3> data = await responseData.map<Roomtemp3>((json) => Roomtemp3.fromJson(json)).toList();
       return data;
     } else {
       throw Exception('Fail......');

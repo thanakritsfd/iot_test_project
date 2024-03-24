@@ -71,45 +71,65 @@ class _ShowValueIoT01State extends State<ShowValueIoT01> {
       ),
       GridColumn(
         columnName: 'temp2',
+        width: 100.0,
         label: Container(
           padding: EdgeInsets.all(8),
           alignment: Alignment.center,
           child: Text(
             'แอร์ตัวที่ 2',
-            //overflow: TextOverflow.ellipsis,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
         ),
       ),
       GridColumn(
         columnName: 'temp3',
+        width: 100.0,
         label: Container(
           padding: EdgeInsets.all(8),
           alignment: Alignment.center,
           child: Text(
             'แอร์ตัวที่ 3',
             overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
         ),
       ),
       GridColumn(
         columnName: 'datesave',
+        width: 100.0,
         label: Container(
           padding: EdgeInsets.all(8),
           alignment: Alignment.center,
           child: Text(
             'วันที่',
             overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
         ),
       ),
       GridColumn(
         columnName: 'timesave',
+        width: 100.0,
         label: Container(
           padding: EdgeInsets.all(8),
           alignment: Alignment.center,
           child: Text(
             'เวลา',
             overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
         ),
       ),
@@ -129,7 +149,9 @@ class _ShowValueIoT01State extends State<ShowValueIoT01> {
         ),
         centerTitle: true,
         leading: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.pop(context);
+          },
           icon: Icon(
             Icons.arrow_back_ios,
             color: Colors.white,

@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:iot_test_project/models/user.dart';
 import 'package:iot_test_project/views/login_ui.dart';
 import 'package:iot_test_project/views/show_value_iot01.dart';
+import 'package:iot_test_project/views/show_value_iot02.dart';
+import 'package:iot_test_project/views/show_value_iot03.dart';
+import 'package:iot_test_project/views/show_value_iot04.dart';
 import 'package:iot_test_project/views/update_profile_ui.dart';
 
 class HomeUI extends StatefulWidget {
@@ -152,7 +155,12 @@ class _HomeUIState extends State<HomeUI> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => ShowValueIoT02()),
+                              );
+                            },
                             child: Text(
                               'ข้อมูล\nแอร์ตัวที่ 1',
                               textAlign: TextAlign.center,
@@ -175,7 +183,12 @@ class _HomeUIState extends State<HomeUI> {
                             ),
                           ),
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => ShowValueIoT03()),
+                              );
+                            },
                             child: Text(
                               'ข้อมูล\nแอร์ตัวที่ 2',
                               textAlign: TextAlign.center,
@@ -198,7 +211,12 @@ class _HomeUIState extends State<HomeUI> {
                             ),
                           ),
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => ShowValueIoT04()),
+                              );
+                            },
                             child: Text(
                               'ข้อมูล\nแอร์ตัวที่ 3',
                               textAlign: TextAlign.center,
