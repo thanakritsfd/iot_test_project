@@ -169,6 +169,7 @@ class _ShowAir1LinegraphUIState extends State<ShowAir1LinegraphUI> {
                                 title: AxisTitle(
                                   text: 'เวลา',
                                 ),
+                                labelRotation: -45,
                               ),
                               primaryYAxis: NumericAxis(
                                 title: AxisTitle(
