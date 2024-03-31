@@ -27,6 +27,7 @@ class _ShowAir1LinegraphUIState extends State<ShowAir1LinegraphUI> {
     if (datetime != null) {
       setState(() {
         dateSelected = DateFormat('yyyy-MM-dd').format(datetime);
+        flag = 0;
       });
     }
   }
@@ -128,21 +129,21 @@ class _ShowAir1LinegraphUIState extends State<ShowAir1LinegraphUI> {
                 ),
               ],
             ),
-            ElevatedButton(
-              onPressed: () {
-                if (dateSelected != 'yyyy-MM-dd') {
-                  // _getbydateRoomtemp();
-                  setState(() {
-                    flag = 0;
-                  });
-                } else {
-                  flag = 1;
-                }
-              },
-              child: Text(
-                'Show Graph',
-              ),
-            ),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     if (dateSelected != 'yyyy-MM-dd') {
+            //       // _getbydateRoomtemp();
+            //       setState(() {
+            //         flag = 0;
+            //       });
+            //     } else {
+            //       flag = 1;
+            //     }
+            //   },
+            //   child: Text(
+            //     'Show Graph',
+            //   ),
+            // ),
             Expanded(
               child: Padding(
                 padding: EdgeInsets.only(
