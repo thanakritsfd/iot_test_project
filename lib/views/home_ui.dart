@@ -6,6 +6,8 @@ import 'package:iot_test_project/views/login_ui.dart';
 import 'package:iot_test_project/views/show_air1_linegraph_ui.dart';
 import 'package:iot_test_project/views/show_air2_linegraph_ui.dart';
 import 'package:iot_test_project/views/show_air3_linegraph_ui.dart';
+import 'package:iot_test_project/views/show_air_barchart_ui.dart';
+import 'package:iot_test_project/views/show_air_linechart_ui.dart';
 import 'package:iot_test_project/views/show_value_iot01.dart';
 import 'package:iot_test_project/views/show_value_iot02.dart';
 import 'package:iot_test_project/views/show_value_iot03.dart';
@@ -90,11 +92,9 @@ class _HomeUIState extends State<HomeUI> {
                               {
                                 setState(() {
                                   widget.user!.userId = value.userId;
-                                  widget.user!.userFullname =
-                                      value.userFullname;
+                                  widget.user!.userFullname = value.userFullname;
                                   widget.user!.userName = value.userName;
-                                  widget.user!.userPassword =
-                                      value.userPassword;
+                                  widget.user!.userPassword = value.userPassword;
                                   widget.user!.userAge = value.userAge;
                                 }),
                               }
@@ -128,8 +128,7 @@ class _HomeUIState extends State<HomeUI> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(
-                                builder: (context) => ShowValueIoT01()),
+                            MaterialPageRoute(builder: (context) => ShowValueIoT01()),
                           );
                         },
                         icon: Icon(
@@ -164,8 +163,7 @@ class _HomeUIState extends State<HomeUI> {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) => ShowValueIoT02()),
+                                MaterialPageRoute(builder: (context) => ShowValueIoT02()),
                               );
                             },
                             child: Text(
@@ -193,8 +191,7 @@ class _HomeUIState extends State<HomeUI> {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) => ShowValueIoT03()),
+                                MaterialPageRoute(builder: (context) => ShowValueIoT03()),
                               );
                             },
                             child: Text(
@@ -222,8 +219,7 @@ class _HomeUIState extends State<HomeUI> {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) => ShowValueIoT04()),
+                                MaterialPageRoute(builder: (context) => ShowValueIoT04()),
                               );
                             },
                             child: Text(
@@ -257,11 +253,7 @@ class _HomeUIState extends State<HomeUI> {
                         children: [
                           ElevatedButton(
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          ShowAir1LinegraphUI()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => ShowAir1LinegraphUI()));
                             },
                             child: Text(
                               'Air 1\nBy Date',
@@ -286,11 +278,7 @@ class _HomeUIState extends State<HomeUI> {
                           ),
                           ElevatedButton(
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          ShowAir2LinegraphUI()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => ShowAir2LinegraphUI()));
                             },
                             child: Text(
                               'Air 2\nBy Date',
@@ -315,11 +303,7 @@ class _HomeUIState extends State<HomeUI> {
                           ),
                           ElevatedButton(
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          ShowAir3LinegraphUI()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => ShowAir3LinegraphUI()));
                             },
                             child: Text(
                               'Air 3\nBy Date',
@@ -348,7 +332,12 @@ class _HomeUIState extends State<HomeUI> {
                         height: MediaQuery.of(context).size.height * 0.02,
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => ShowAirBarChartUI()),
+                          );
+                        },
                         child: Text(
                           'Bar Chart\nBy Air and Date',
                           textAlign: TextAlign.center,
@@ -374,7 +363,12 @@ class _HomeUIState extends State<HomeUI> {
                         height: MediaQuery.of(context).size.height * 0.02,
                       ),
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => ShowAirLineChartUI()),
+                          );
+                        },
                         child: Text(
                           'Line Chart\nBy Air and Date',
                           textAlign: TextAlign.center,

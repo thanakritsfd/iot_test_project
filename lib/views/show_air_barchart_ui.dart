@@ -7,14 +7,14 @@ import 'package:intl/intl.dart';
 import 'package:iot_test_project/services/call_api.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class ShowAir3LinegraphUI extends StatefulWidget {
-  const ShowAir3LinegraphUI({super.key});
+class ShowAirBarChartUI extends StatefulWidget {
+  const ShowAirBarChartUI({super.key});
 
   @override
-  State<ShowAir3LinegraphUI> createState() => _ShowAir3LinegraphUIState();
+  State<ShowAirBarChartUI> createState() => _ShowAirBarChartUIState();
 }
 
-class _ShowAir3LinegraphUIState extends State<ShowAir3LinegraphUI> {
+class _ShowAirBarChartUIState extends State<ShowAirBarChartUI> {
   String? dateSelected = 'ปี-เดือน-วัน';
 
   String showThaiMonth(month) {
@@ -95,11 +95,11 @@ class _ShowAir3LinegraphUIState extends State<ShowAir3LinegraphUI> {
             ),
             title: ChartTitle(text: 'Tempurature Chart of AIR 1'),
             legend: Legend(isVisible: true),
-            series: <LineSeries>[
-              LineSeries<Roomtemp, String>(
+            series: <ColumnSeries>[
+              ColumnSeries<Roomtemp, String>(
                 dataSource: snapshot.data!,
                 xValueMapper: (Roomtemp data, _) => data.timesave ?? '',
-                yValueMapper: (Roomtemp data, _) => data.temp3 ?? 0,
+                yValueMapper: (Roomtemp data, _) => data.temp1 ?? 0,
                 name: 'Tempurature',
                 dataLabelSettings: DataLabelSettings(isVisible: true),
                 markerSettings: MarkerSettings(isVisible: true),
@@ -117,21 +117,12 @@ class _ShowAir3LinegraphUIState extends State<ShowAir3LinegraphUI> {
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 134, 13, 5),
         title: Text(
-          'กราฟเส้นแอร์ตัวที่ 3',
+          'กราฟแท่งแอร์ทั้งหมด',
           style: TextStyle(
             color: Colors.white,
           ),
         ),
         centerTitle: true,
-        leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          icon: Icon(
-            Icons.arrow_back_ios,
-            color: Colors.white,
-          ),
-        ),
       ),
       body: Center(
         child: Column(
@@ -154,7 +145,6 @@ class _ShowAir3LinegraphUIState extends State<ShowAir3LinegraphUI> {
                 IconButton(
                   onPressed: () {
                     showCalendar();
-                    //buildGraph();
                   },
                   icon: Icon(
                     Icons.calendar_month,
@@ -168,21 +158,6 @@ class _ShowAir3LinegraphUIState extends State<ShowAir3LinegraphUI> {
                 color: Colors.blue[800],
               ),
             ),
-            // ElevatedButton(
-            //   onPressed: () {
-            //     if (dateSelected != 'yyyy-MM-dd') {
-            //       // _getbydateRoomtemp();
-            //       setState(() {
-            //         flag = 0;
-            //       });
-            //     } else {
-            //       flag = 1;
-            //     }
-            //   },
-            //   child: Text(
-            //     'Show Graph',
-            //   ),
-            // ),
             Expanded(
               child: Padding(
                 padding: EdgeInsets.only(
@@ -218,29 +193,33 @@ class _ShowAir3LinegraphUIState extends State<ShowAir3LinegraphUI> {
                                       ),
                                       labelFormat: '{value}℃',
                                     ),
-                                    title: ChartTitle(text: 'Tempurature Chart of AIR 1'),
+                                    title: ChartTitle(text: 'Tempurature Chart of AIR'),
                                     legend: Legend(isVisible: true),
-                                    series: <LineSeries>[
-                                      LineSeries<Roomtemp, String>(
+                                    series: <ColumnSeries>[
+                                      ColumnSeries<Roomtemp, String>(
                                         dataSource: snapshot.data!,
                                         xValueMapper: (Roomtemp data, _) => data.timesave ?? '',
-                                        yValueMapper: (Roomtemp data, _) => data.temp3 ?? 0,
-                                        name: 'Tempurature',
+                                        yValueMapper: (Roomtemp data, _) => data.temp1 ?? 0,
+                                        name: 'Temp1',
                                         dataLabelSettings: DataLabelSettings(isVisible: true),
                                         markerSettings: MarkerSettings(isVisible: true),
                                       ),
-                                      // LineSeries<Roomtemp, String>(
-                                      //   dataSource: snapshot.data!,
-                                      //   xValueMapper: (Roomtemp data, _) =>
-                                      //       data.timesave ?? '',
-                                      //   yValueMapper: (Roomtemp data, _) =>
-                                      //       data.temp2 ?? 0,
-                                      //   name: 'Tempurature2',
-                                      //   dataLabelSettings:
-                                      //       DataLabelSettings(isVisible: true),
-                                      //   markerSettings:
-                                      //       MarkerSettings(isVisible: true),
-                                      // ),
+                                      ColumnSeries<Roomtemp, String>(
+                                        dataSource: snapshot.data!,
+                                        xValueMapper: (Roomtemp data, _) => data.timesave ?? '',
+                                        yValueMapper: (Roomtemp data, _) => data.temp2 ?? 0,
+                                        name: 'Temp2',
+                                        dataLabelSettings: DataLabelSettings(isVisible: true),
+                                        markerSettings: MarkerSettings(isVisible: true),
+                                      ),
+                                      ColumnSeries<Roomtemp, String>(
+                                        dataSource: snapshot.data!,
+                                        xValueMapper: (Roomtemp data, _) => data.timesave ?? '',
+                                        yValueMapper: (Roomtemp data, _) => data.temp3 ?? 0,
+                                        name: 'Temp3',
+                                        dataLabelSettings: DataLabelSettings(isVisible: true),
+                                        markerSettings: MarkerSettings(isVisible: true),
+                                      ),
                                     ],
                                   );
                           }

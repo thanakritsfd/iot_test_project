@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_interpolation_to_compose_strings, unnecessary_import
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -17,6 +17,37 @@ class ShowAir1LinegraphUI extends StatefulWidget {
 class _ShowAir1LinegraphUIState extends State<ShowAir1LinegraphUI> {
   String? dateSelected = 'ปี-เดือน-วัน';
 
+  String showThaiMonth(month) {
+    switch (month) {
+      case 1:
+        return 'มกราคม';
+      case 2:
+        return 'กุมภาพันธ์';
+      case 3:
+        return 'มีนาคม';
+      case 4:
+        return 'เมษายน';
+      case 5:
+        return 'พฤษภาคม';
+      case 6:
+        return 'มิถุนายน';
+      case 7:
+        return 'กรกฎาคม';
+      case 8:
+        return 'สิงหาคม';
+      case 9:
+        return 'กันยายน';
+      case 10:
+        return 'ตุลาคม';
+      case 11:
+        return 'พฤศจิกายน';
+      default:
+        return 'ธันวาคม';
+    }
+  }
+
+  String showThaiDate = 'โปรดเลือกวันที่ที่ต้องการ';
+
   Future showCalendar() async {
     DateTime? datetime = await showDatePicker(
       context: context,
@@ -28,6 +59,8 @@ class _ShowAir1LinegraphUIState extends State<ShowAir1LinegraphUI> {
       setState(() {
         dateSelected = DateFormat('yyyy-MM-dd').format(datetime);
         flag = 0;
+        // showThaiDate = 'วันที่ ' + datetime.day.toString() + ' ' + showThaiMonth(datetime.month) + ' ' + (543 + datetime.year).toString();
+        showThaiDate = 'วันที่ ${datetime.day} ${showThaiMonth(datetime.month)} ${543 + datetime.year}';
       });
     }
   }
@@ -129,6 +162,12 @@ class _ShowAir1LinegraphUIState extends State<ShowAir1LinegraphUI> {
                 ),
               ],
             ),
+            Text(
+              showThaiDate,
+              style: TextStyle(
+                color: Colors.blue[800],
+              ),
+            ),
             // ElevatedButton(
             //   onPressed: () {
             //     if (dateSelected != 'yyyy-MM-dd') {
@@ -153,61 +192,57 @@ class _ShowAir1LinegraphUIState extends State<ShowAir1LinegraphUI> {
                   bottom: 30,
                 ),
                 child: flag == 1
-                    ? Container(color: Colors.transparent)
+                    ? Text('ไม่มีข้อมูล')
                     : FutureBuilder<List<Roomtemp>>(
                         future: _getbydateRoomtemp(),
                         builder: (context, snapshot) {
-                          if (snapshot.connectionState ==
-                              ConnectionState.waiting) {
+                          if (snapshot.connectionState == ConnectionState.waiting) {
                             return CircularProgressIndicator();
                           } else if (snapshot.hasError) {
                             return Text(
                               'Error.....',
                             );
                           } else {
-                            return SfCartesianChart(
-                              primaryXAxis: CategoryAxis(
-                                title: AxisTitle(
-                                  text: 'เวลา',
-                                ),
-                                labelRotation: -45,
-                              ),
-                              primaryYAxis: NumericAxis(
-                                title: AxisTitle(
-                                  text: 'อุณหภูมิ',
-                                ),
-                                labelFormat: '{value}℃',
-                              ),
-                              title: ChartTitle(
-                                  text: 'Tempurature Chart of AIR 1'),
-                              legend: Legend(isVisible: true),
-                              series: <LineSeries>[
-                                LineSeries<Roomtemp, String>(
-                                  dataSource: snapshot.data!,
-                                  xValueMapper: (Roomtemp data, _) =>
-                                      data.timesave ?? '',
-                                  yValueMapper: (Roomtemp data, _) =>
-                                      data.temp1 ?? 0,
-                                  name: 'Tempurature',
-                                  dataLabelSettings:
-                                      DataLabelSettings(isVisible: true),
-                                  markerSettings:
-                                      MarkerSettings(isVisible: true),
-                                ),
-                                // LineSeries<Roomtemp, String>(
-                                //   dataSource: snapshot.data!,
-                                //   xValueMapper: (Roomtemp data, _) =>
-                                //       data.timesave ?? '',
-                                //   yValueMapper: (Roomtemp data, _) =>
-                                //       data.temp2 ?? 0,
-                                //   name: 'Tempurature2',
-                                //   dataLabelSettings:
-                                //       DataLabelSettings(isVisible: true),
-                                //   markerSettings:
-                                //       MarkerSettings(isVisible: true),
-                                // ),
-                              ],
-                            );
+                            return snapshot.data![0].roomtempId == 0
+                                ? Text('ไม่มีข้อมูล')
+                                : SfCartesianChart(
+                                    primaryXAxis: CategoryAxis(
+                                      title: AxisTitle(
+                                        text: 'เวลา',
+                                      ),
+                                      labelRotation: -45,
+                                    ),
+                                    primaryYAxis: NumericAxis(
+                                      title: AxisTitle(
+                                        text: 'อุณหภูมิ',
+                                      ),
+                                      labelFormat: '{value}℃',
+                                    ),
+                                    title: ChartTitle(text: 'Tempurature Chart of AIR 1'),
+                                    legend: Legend(isVisible: true),
+                                    series: <LineSeries>[
+                                      LineSeries<Roomtemp, String>(
+                                        dataSource: snapshot.data!,
+                                        xValueMapper: (Roomtemp data, _) => data.timesave ?? '',
+                                        yValueMapper: (Roomtemp data, _) => data.temp1 ?? 0,
+                                        name: 'Tempurature',
+                                        dataLabelSettings: DataLabelSettings(isVisible: true),
+                                        markerSettings: MarkerSettings(isVisible: true),
+                                      ),
+                                      // LineSeries<Roomtemp, String>(
+                                      //   dataSource: snapshot.data!,
+                                      //   xValueMapper: (Roomtemp data, _) =>
+                                      //       data.timesave ?? '',
+                                      //   yValueMapper: (Roomtemp data, _) =>
+                                      //       data.temp2 ?? 0,
+                                      //   name: 'Tempurature2',
+                                      //   dataLabelSettings:
+                                      //       DataLabelSettings(isVisible: true),
+                                      //   markerSettings:
+                                      //       MarkerSettings(isVisible: true),
+                                      // ),
+                                    ],
+                                  );
                           }
                         },
                       ),
