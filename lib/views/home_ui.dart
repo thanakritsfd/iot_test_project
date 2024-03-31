@@ -3,6 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:iot_test_project/models/user.dart';
 import 'package:iot_test_project/views/login_ui.dart';
+import 'package:iot_test_project/views/show_air1_linegraph_ui.dart';
+import 'package:iot_test_project/views/show_air2_linegraph_ui.dart';
+import 'package:iot_test_project/views/show_air3_linegraph_ui.dart';
 import 'package:iot_test_project/views/show_value_iot01.dart';
 import 'package:iot_test_project/views/show_value_iot02.dart';
 import 'package:iot_test_project/views/show_value_iot03.dart';
@@ -87,9 +90,11 @@ class _HomeUIState extends State<HomeUI> {
                               {
                                 setState(() {
                                   widget.user!.userId = value.userId;
-                                  widget.user!.userFullname = value.userFullname;
+                                  widget.user!.userFullname =
+                                      value.userFullname;
                                   widget.user!.userName = value.userName;
-                                  widget.user!.userPassword = value.userPassword;
+                                  widget.user!.userPassword =
+                                      value.userPassword;
                                   widget.user!.userAge = value.userAge;
                                 }),
                               }
@@ -123,7 +128,8 @@ class _HomeUIState extends State<HomeUI> {
                         onPressed: () {
                           Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => ShowValueIoT01()),
+                            MaterialPageRoute(
+                                builder: (context) => ShowValueIoT01()),
                           );
                         },
                         icon: Icon(
@@ -158,7 +164,8 @@ class _HomeUIState extends State<HomeUI> {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => ShowValueIoT02()),
+                                MaterialPageRoute(
+                                    builder: (context) => ShowValueIoT02()),
                               );
                             },
                             child: Text(
@@ -186,7 +193,8 @@ class _HomeUIState extends State<HomeUI> {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => ShowValueIoT03()),
+                                MaterialPageRoute(
+                                    builder: (context) => ShowValueIoT03()),
                               );
                             },
                             child: Text(
@@ -214,7 +222,8 @@ class _HomeUIState extends State<HomeUI> {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => ShowValueIoT04()),
+                                MaterialPageRoute(
+                                    builder: (context) => ShowValueIoT04()),
                               );
                             },
                             child: Text(
@@ -247,9 +256,15 @@ class _HomeUIState extends State<HomeUI> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ShowAir1LinegraphUI()));
+                            },
                             child: Text(
-                              'Bar Chart\nBy Date',
+                              'Air 1\nBy Date',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Colors.white,
@@ -258,7 +273,7 @@ class _HomeUIState extends State<HomeUI> {
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.teal[400],
                               fixedSize: Size(
-                                MediaQuery.of(context).size.width * 0.35,
+                                MediaQuery.of(context).size.width * 0.20,
                                 70,
                               ),
                               shape: RoundedRectangleBorder(
@@ -270,9 +285,15 @@ class _HomeUIState extends State<HomeUI> {
                             ),
                           ),
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ShowAir2LinegraphUI()));
+                            },
                             child: Text(
-                              'Line Chart\nBy Date',
+                              'Air 2\nBy Date',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Colors.white,
@@ -281,7 +302,36 @@ class _HomeUIState extends State<HomeUI> {
                             style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.teal[400],
                               fixedSize: Size(
-                                MediaQuery.of(context).size.width * 0.35,
+                                MediaQuery.of(context).size.width * 0.20,
+                                70,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              padding: EdgeInsets.symmetric(
+                                horizontal: 10,
+                              ),
+                            ),
+                          ),
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ShowAir3LinegraphUI()));
+                            },
+                            child: Text(
+                              'Air 3\nBy Date',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                color: Colors.white,
+                              ),
+                            ),
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.teal[400],
+                              fixedSize: Size(
+                                MediaQuery.of(context).size.width * 0.20,
                                 70,
                               ),
                               shape: RoundedRectangleBorder(

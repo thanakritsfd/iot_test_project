@@ -136,4 +136,23 @@ class CallApi {
       throw Exception('Fail......');
     }
   }
+
+  static Future<List<Roomtemp>> getbydateRoomtemp(Roomtemp roomtemp) async {
+    //คำสั่งเรียกใช้ api ที่ Server
+    final response = await http.post(
+      Uri.parse(Host.hostURL + "/iotsau01api/apis/roomtemp/get_by_date_roomtemp_api.php"),
+      body: jsonEncode(roomtemp.toJson()),
+      headers: {'Content-Type': 'application/json'},
+    );
+
+    if (response.statusCode == 200) {
+      final responseData = jsonDecode(response.body);
+      //print(responseData);
+      //แปลงข้แมูลที่มาเป็น json เป็นข้อมูลที่เอาไปใช้ใน app
+      List<Roomtemp> data = await responseData.map<Roomtemp>((json) => Roomtemp.fromJson(json)).toList();
+      return data;
+    } else {
+      throw Exception('Fail......');
+    }
+  }
 }
